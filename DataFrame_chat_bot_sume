@@ -1,0 +1,20 @@
+import pandas as pd
+
+df_vereador = pd.read_csv("Partido_Vereador.csv", sep=';', encoding='cp1252')
+df_gasto = pd.read_csv("Vereador_Custeio.csv", sep=';', encoding='cp1252')
+
+df_gasto["Gasto"]=df_gasto["Gasto"].str.replace('R','')
+df_gasto["Gasto"]=df_gasto["Gasto"].str.replace('$','')
+df_gasto["Gasto"]=df_gasto["Gasto"].str.replace('.','')
+df_gasto["Gasto"]=df_gasto["Gasto"].str.replace(',','.').astype(float)
+
+df_gasto_agregado=df_gasto.groupby(by="Vereador").Gasto.sum().reset_index()
+
+df_gasto_agregado = round(df_gasto_agregado, 2)
+df_vereador_partido_gasto=df_gasto_agregado.merge(df_vereador,on='Vereador')
+
+df_vereador_partido_gasto=df_vereador_partido_gasto[['Vereador','Partido','Gasto']]
+
+print(df_vereador_partido_gasto)
+
+df_vereador_partido_gasto.to_csv('dataset-bot.csv',index=False,sep=';',encoding='cp1252')
