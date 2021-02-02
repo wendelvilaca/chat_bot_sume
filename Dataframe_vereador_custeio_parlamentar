@@ -1,0 +1,15 @@
+import pandas as pd
+
+df = pd.read_csv('Custeio_Parlamentar.csv', header=None, sep=';')
+ii=0
+df_saida = pd.DataFrame()
+while ii < df.shape[0]:
+    df_aux = pd.DataFrame([[df.values[ii][0].strip(),df.values[ii+2][0].strip()]])
+    df_saida = pd.concat([df_aux,df_saida])
+    ii+=3
+    
+df_saida = df_saida.rename(columns={0:'Vereador',1:'Gasto'})
+
+print(df_saida)
+
+df_saida.to_csv('Vereador_Custeio.csv', index=False, sep=';',encoding='cp1252')
