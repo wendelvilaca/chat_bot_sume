@@ -1,0 +1,17 @@
+import time
+from bs4 import BeautifulSoup
+from selenium import webdriver
+
+driver = webdriver.Firefox(executable_path="C:/Users/Wendel/PycharmProjects/pythonProject/Driver/geckodriver.exe")
+driver.get("https://www.cmbh.mg.gov.br/vereadores")
+time.sleep(3)
+dados_0 = driver.find_element_by_class_name("view-content")
+html_0 = dados_0.get_attribute("innerHTML")
+soup = BeautifulSoup(html_0, 'html.parser')
+resultado = (soup.get_text())
+print(soup.get_text())
+with open("Vereador.csv", "w", encoding="utf-8") as f:
+    s = "".join(resultado)
+    f.write(s + "\n")
+time.sleep(2)
+driver.close()
