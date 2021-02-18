@@ -28,7 +28,7 @@ for a in mes:
     html = dados.get_attribute("innerHTML")
     soup = BeautifulSoup(html, "html.parser")
     table = soup.select_one("table")
-    headers = [header.text+";" for header in table.select("tr.success td")]
+    headers = [header.text+\"n" for header in table.select("tr.success td")]
     print(headers)
     with open("Custeio_Parlamentar.csv", "a") as f:
         s = "".join(headers)
