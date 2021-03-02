@@ -1,3 +1,6 @@
+#@autor Wendel Vilaça, 2021
+#DataFrame_chat_bot_sume
+
 import pandas as pd
 
 df_vereador = pd.read_csv("Partido_Vereador.csv", sep=';', encoding='cp1252')
