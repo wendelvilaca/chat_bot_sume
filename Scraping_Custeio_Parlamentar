@@ -1,3 +1,6 @@
+#@autor Wendel Vilaça, 2021
+#Scraping_Custeio_Parlamentar
+
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
