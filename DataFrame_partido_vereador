@@ -1,4 +1,5 @@
-DataFrame_partido_vereador
+#@autor Wendel Vilaça, 2021
+#DataFrame_partido_vereador
 
 import pandas as pd
 
